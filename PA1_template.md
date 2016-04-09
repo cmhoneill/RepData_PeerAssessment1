@@ -36,17 +36,14 @@ sumdata <- aggregate(steps ~ date, noNAs, sum)
 ##### 1. Make a histogram of the total number of steps taken each day
 
 ``` r
-png('plot1.png') 
 ## Histogram of total steps for each day   
    g <- ggplot(sumdata, aes(date, steps)) 
    g <- g + geom_line() + ggtitle('Total steps for Each Day')   +
         geom_bar(stat="identity",fill="purple",width=0.50)
    print(g)
-   dev.off()
 ```
 
-    ## png 
-    ##   2
+![](PA1_template_files/figure-markdown_github/unnamed-chunk-5-1.png)<!-- -->
 
 ##### 2. Calculate and report the mean and median total number of steps taken per day
 
@@ -70,15 +67,12 @@ avgstepsinterval <- aggregate(steps ~ interval, noNAs, mean)
 ##### 1. Make a time series plot
 
 ``` r
-png('plot2.png') 
    g <- ggplot(avgstepsinterval, aes(interval,steps)) 
    g <- g + geom_line() + ggtitle('Average Number of Steps per Interval')   
    print(g)
-   dev.off() 
 ```
 
-    ## png 
-    ##   2
+![](PA1_template_files/figure-markdown_github/unnamed-chunk-8-1.png)<!-- -->
 
 ##### 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -112,17 +106,14 @@ CompleteData <- transform(ActivityData, steps = ifelse(is.na(ActivityData$steps)
 ##### 4. Make a histogram of the total number of steps taken each day
 
 ``` r
-png('plot3.png') 
    ## Histogram of total steps for each day with complete data    
    g <- ggplot(CompleteData, aes(date, steps)) 
    g <- g + geom_line() + ggtitle('Total steps for Each Day')   +
        geom_bar(stat="identity",fill="red",width=0.50)
    print(g)
-   dev.off()
 ```
 
-    ## png 
-    ##   2
+![](PA1_template_files/figure-markdown_github/unnamed-chunk-12-1.png)<!-- -->
 
 ##### ... and Calculate and report the mean and median total number of steps taken per day.
 
@@ -158,12 +149,9 @@ Are there differences in activity patterns between weekdays and weekends?
 ##### 2. Make a panel plot containing a time series plot
 
 ``` r
-   png('plot4.png') 
    g <- ggplot(CDsum, aes(interval,steps)) + geom_line() + ggtitle('Steps on Weekdays compare    to Weekends') + facet_grid(daytype ~ .) 
        
    print(g)
-   dev.off()
 ```
 
-    ## png 
-    ##   2
+![](PA1_template_files/figure-markdown_github/unnamed-chunk-15-1.png)<!-- -->
